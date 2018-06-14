@@ -57,3 +57,25 @@ function validateValues( values ){
     }
     return true;
 }
+
+// RAISE AN ERROR
+function raiseError( message ) {
+    // CREATE ERROR ALERT ELEMENT
+    const errorDiv = document.createElement('div');
+    const text = document.createTextNode(message);
+    
+    errorDiv.className = 'alert alert-danger';
+    errorDiv.appendChild(text);
+
+    // INSERT THE ERROR DIV INTO THE UI
+    const card = document.querySelector('.card');
+    const heading = document.querySelector('.heading');
+
+    card.insertBefore(errorDiv, heading);
+
+    // CLEAR ERROR AFTER 3 SECONDS
+    setTimeout(clearError, 3000);
+
+    return;
+}
+
