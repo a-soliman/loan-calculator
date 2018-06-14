@@ -6,3 +6,7 @@ const years             = document.querySelector('#years');
 const monthlyPayment    = document.querySelector('#monthly-payment');
 const totalPayment      = document.querySelector('#total-payment');
 const totalInterest     = document.querySelector('#total-interest');
+
+// LISTEN FOR SUBMIT
+form.addEventListener('submit', claculate);
+
