@@ -79,3 +79,7 @@ function raiseError( message ) {
     return;
 }
 
+// CLEAR ERROR
+function clearError() {
+    document.querySelector('div.alert-danger').remove();
+}
