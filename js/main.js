@@ -46,3 +46,14 @@ function getValues() {
         years: yearsValue
     };
 }
+
+// VALIDATE THE SUBMITED VALUES
+function validateValues( values ){
+    if ( !values.amount || !values.interest || !values.years ) { return false; }
+    
+    for (let field in values) {
+        if ( isNaN(values[field]) ) { return false; }
+        if ( values[field] < 1) { return false; }
+    }
+    return true;
+}
