@@ -6,6 +6,10 @@ const years             = document.querySelector('#years');
 const monthlyPayment    = document.querySelector('#monthly-payment');
 const totalPayment      = document.querySelector('#total-payment');
 const totalInterest     = document.querySelector('#total-interest');
+const spinnerDiv        = document.querySelector('#loading');
+
+// HIDE SPINNER
+clearSpiner();
 
 // LISTEN FOR SUBMIT
 form.addEventListener('submit', claculate);
@@ -28,9 +32,14 @@ function claculate(e) {
     const x = Math.pow(1 + calculatedInterest, calculatedPayments);
     const monthly = (principal * x * calculatedInterest) / (x - 1);
 
-    monthlyPayment.value    = monthly.toFixed(2);
-    totalPayment.value      = (monthly * calculatedPayments).toFixed(2);
-    totalInterest.value     = ((monthly * calculatedPayments) - principal).toFixed(2);
+    displaySpinner();
+    setTimeout(clearSpiner, 500);
+    setTimeout(() => {
+        monthlyPayment.value    = monthly.toFixed(2);
+        totalPayment.value      = (monthly * calculatedPayments).toFixed(2);
+        totalInterest.value     = ((monthly * calculatedPayments) - principal).toFixed(2);
+    }, 1000);
+
     return;
 }
 
@@ -82,4 +91,15 @@ function raiseError( message ) {
 // CLEAR ERROR
 function clearError() {
     document.querySelector('div.alert-danger').remove();
+}
+
+// DISPLAY SPINNER
+function displaySpinner() {
+    spinnerDiv.style.display = 'block';
+    return;
+}
+
+// CLEAR SPINNER
+function clearSpiner() {
+    spinnerDiv.style.display = 'none';
 }
