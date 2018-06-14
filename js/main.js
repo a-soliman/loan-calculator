@@ -81,6 +81,7 @@ function raiseError( message ) {
     const heading = document.querySelector('.heading');
 
     card.insertBefore(errorDiv, heading);
+    scrollToTop();
 
     // CLEAR ERROR AFTER 3 SECONDS
     setTimeout(clearError, 3000);
@@ -102,4 +103,9 @@ function displaySpinner() {
 // CLEAR SPINNER
 function clearSpiner() {
     spinnerDiv.style.display = 'none';
+}
+
+// SCROLLTOTOP
+function scrollToTop() {
+    window.scrollTo(0, 0);
 }
