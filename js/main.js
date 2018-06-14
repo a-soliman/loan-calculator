@@ -33,3 +33,16 @@ function claculate(e) {
     totalInterest.value     = ((monthly * calculatedPayments) - principal).toFixed(2);
     return;
 }
+
+// GET THE SUBMITED VALUES
+function getValues() {
+    const amountValue   = parseFloat(loanAmount.value);
+    const interestValue = parseFloat(interest.value);
+    const yearsValue    = parseFloat(years.value);
+
+    return {
+        amount: amountValue,
+        interest: interestValue,
+        years: yearsValue
+    };
+}
